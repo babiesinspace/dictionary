@@ -21,7 +21,7 @@ selec = Definition.new("select", ".select passes each entry in an enumerable to 
 reject = Definition.new("reject", ".reject passes each entry in an enumerable to a block. It returns an array populated with any instances for which the block returns a false value.")
 
 dictionary = Dictionary.new([each, map, grep, inject, reduce, includ, find, find_all, selec, reject])
-
+#if the user doesn't run any commands, tell them the commands they can run
 if ARGV[0] == nil
   puts "Welcome to my Enumerable Dictionary! Please run me again, and after typing 'app.rb', please add one of the following:"
   puts "  - A term you would like to search"
