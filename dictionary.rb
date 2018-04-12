@@ -19,12 +19,12 @@ class Dictionary
     end
   end 
 
-  def get_info(ennumerable)
+  def get_info(enumerable)
     if 
-      definition = @library[ennumerable]
+      definition = @library[enumerable]
       puts definition
     else
-      find_similar(ennumerable)
+      find_similar(enumerable)
     end 
   end 
 
@@ -35,7 +35,8 @@ class Dictionary
   def add_new(method_name, definition)
     definition = Definition.new(method_name, definition)
     @library[definition.method_name] = definition.explanation
-    puts "#{method_name} has been successfully added"
+    puts "#{method_name} has been successfully added with the following definition:"
+    self.get_info(method_name)
   end 
 
   def find_similar(term)
@@ -49,10 +50,3 @@ class Dictionary
   end 
 end 
 
-each = Definition.new("each", ".each is a Ruby method that can be called on an array. It takes a block of code and calls it once for each element, passing that element to the block.")
-
-dictionary = Dictionary.new([each])
-
-#
-
-dictionary.get_info("eachl")
