@@ -6,7 +6,21 @@ map = Definition.new("map", ".map executes the given block for each element of t
 
 grep = Definition.new("grep", ".grep accepts a pattern (regex) and returns an array of every matching element in the enum. When a block is passed, the result of running that block on those matched elements is what is stored in the array.")
 
-dictionary = Dictionary.new([each, map, grep])
+inject = Definition.new("inject", ".inject combines all elements of the enumerable by applying a binary operation, specified by a block or a symbol that names a method or operator. Can be used to build or reduce arrays and hashes.\nExample:\n[5, 10, 20].inject(:+) => 35 \nSee also: reduce")
+
+reduce = Definition.new("reduce", ".reduce combines all elements of the enumerable by applying a binary operation, specified by a block or a symbol that names a method or operator. Can be used to build or reduce arrays and hashes.\nExample:\n[5, 10, 20].reduce(:+) => 35 \nSee also: inject")
+
+includ = Definition.new("include?", ".include?(obj) takes an object as a parameter and iterates through an enumerable - returns a boolean denoting whether or not any member of the enum equals the object. Equality is tested using ==")
+
+find = Definition.new("find", ".find passes each entry in an enumerable to a block. It returns the first instance for which the block does not return 'false'. If no object matches, returns 'nil'.\nSee also: find_all")
+
+find_all = Definition.new("find_all", ".find_all passes each entry in an enumerable to a block. It returns an array populated with any instances for which the block does not return 'false'. If no object matches, returns 'nil'.\nSee also: find, select")
+
+selec = Definition.new("select", ".select passes each entry in an enumerable to a block. It returns an array populated with any instances for which the block returns a true value. If no object matches, returns 'nil'.\nSee also: find, reject")
+
+reject = Definition.new("reject", ".reject passes each entry in an enumerable to a block. It returns an array populated with any instances for which the block returns a false value.")
+
+dictionary = Dictionary.new([each, map, grep, inject, reduce, includ, find, find_all, selec, reject])
 
 if ARGV[0] == nil
   puts "Welcome to my Enumerable Dictionary! Please run me again, and after typing 'app.rb', please add one of the following:"
