@@ -20,8 +20,12 @@ class Dictionary
   end 
 
   def get_info(ennumerable)
-    definition = @library[ennumerable]
-    puts definition
+    if 
+      definition = @library[ennumerable]
+      puts definition
+    else
+      find_similar(ennumerable)
+    end 
   end 
 
   def see_index
@@ -33,10 +37,22 @@ class Dictionary
     @library[definition.method_name] = definition.explanation
     puts "#{method_name} has been successfully added"
   end 
+
+  def find_similar(term)
+    possibles = @library.keys.grep(/[#{term}]{3,}/)
+    if !possibles.empty?  
+      puts "Did you mean?"
+      possibles.each { |t| puts t }
+    else 
+      puts "Sorry I didn't see that term or anything similar! Please check the index"
+    end 
+  end 
 end 
 
 each = Definition.new("each", ".each is a Ruby method that can be called on an array. It takes a block of code and calls it once for each element, passing that element to the block.")
 
 dictionary = Dictionary.new([each])
 
-dictionary.see_index
+#
+
+dictionary.get_info("eachl")
